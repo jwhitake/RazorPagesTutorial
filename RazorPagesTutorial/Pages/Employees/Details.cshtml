@@ -1,0 +1,41 @@
+﻿@page "/Employees/view/{id:int}"
+@model RazorPagesTutorial.Pages.Employees.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+    var photoPath = "~/images/" + (Model.employee.PhotoPath ?? "noimage.png");
+}
+
+    <style>
+        .btn {
+            width: 75px;
+        }
+    </style>
+
+
+<h1>Details</h1>
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+
+            <div class="card-header">
+                <h1>@Model.employee.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+
+                <h4>Employee Id  : @Model.employee.Id</h4>
+                <h4>Email  : @Model.employee.Email</h4>
+                <h4>Department  : @Model.employee.Department</h4>
+
+            </div>
+
+            <div class="card-footer text-center">
+                <a asp-page="Index" class="btn btn-primary">Back</a>
+                <a href="#" class="btn btn-info m-1">Edit</a>
+                <a href="#" class="btn btn-danger m-1">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
