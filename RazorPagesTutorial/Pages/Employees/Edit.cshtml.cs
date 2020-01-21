@@ -7,21 +7,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesTutorial.models;
 using RazorPagesTutorial.Services;
 
-namespace RazorPagesTutorial.Pages.Employees
+namespace RazorPagesTutorial
 {
-    public class DetailsModel : PageModel
+    public class EditModel : PageModel
     {
+        public Employee Employee { get; set; }
         private readonly IEmployeeRepository _employeeRepository;
-        public Employee employee;
 
-        public DetailsModel(IEmployeeRepository employeeRepository)
+        public EditModel(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
-        public IActionResult OnGet(int Id)
+
+        
+        public IActionResult OnGet(int id)
         {
-            employee = _employeeRepository.GetEmployee(Id);
-            if(employee == null)
+            Employee = _employeeRepository.GetEmployee(id);
+            if(Employee == null)
             {
                 return RedirectToPage("/NotFound");
             }
